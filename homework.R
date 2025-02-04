@@ -15,7 +15,7 @@ ds <- read_csv("data_raw/rolling_stone_500.csv")
 #Then, convert it to a numeric, saving it back to 'ds'
 #Use typeof to check that your conversion succeeded
 
-#ANSWER
+#ANSWERdngdkngdlg
 
 
 ### Question 2 ---------- 
