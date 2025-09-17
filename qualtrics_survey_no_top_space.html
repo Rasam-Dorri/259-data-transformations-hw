@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Override Qualtrics default styling */
+    #SurveyEngineBody {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    #Questions {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .QuestionOuter {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .QuestionBody {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .InnerInner {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .QuestionText {
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+    }
+    
+    /* Hide Qualtrics question numbering and spacing */
+    .QuestionText > span:first-child {
+        display: none !important;
+    }
+    
+    /* Position content at the very top */
+    .Skin .SkinInner {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    .Skin #Questions {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    /* Additional overrides for common Qualtrics themes */
+    #Page {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    #HeaderContainer {
+        display: none !important;
+    }
+    
+    #Header {
+        display: none !important;
+    }
+    
+    .Separator {
+        display: none !important;
+    }
+    
+    /* Your original styles start here */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #e8eef5;
+        line-height: 1.6;
+        color: #333;
+        font-size: 15px;
+        padding: 0 !important; /* Changed from 20px to 0 */
+        margin: 0 !important;
+    }
+    
+    .consent-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        min-height: 100vh;
+        border-radius: 0; /* Changed from 12px to 0 for top alignment */
+        box-shadow: 0 2px 10px rgba(0, 61, 165, 0.1);
+        overflow: hidden;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    
+    /* Header with UCR Colors */
+    .header {
+        background-color: #003DA5;
+        color: white;
+        padding: 40px 30px;
+        border-bottom: 4px solid #FFB81C;
+    }
+    
+    .header h1 {
+        font-size: 32px;
+        font-weight: normal;
+        margin-bottom: 15px;
+    }
+    
+    .study-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    .researchers {
+        font-size: 14px;
+        opacity: 0.95;
+        line-height: 1.5;
+    }
+    
+    .irb-protocol {
+        font-size: 12px;
+        opacity: 0.9;
+        margin-top: 5px;
+    }
+    
+    /* Main Content */
+    .content {
+        padding: 40px 30px;
+        background-color: #fafbfc;
+    }
+    
+    /* Section Styling */
+    .section {
+        margin-bottom: 35px;
+        padding: 20px;
+        border-left: 3px solid #003DA5;
+        padding-left: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    
+    .section-header {
+        font-weight: bold;
+        color: #003DA5;
+        font-size: 20px;
+        margin-bottom: 15px;
+        display: block;
+    }
+    
+    .section-header:before {
+        content: "■ ";
+        color: #FFB81C;
+        font-size: 16px;
+        vertical-align: middle;
+    }
+    
+    /* Lists */
+    ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 10px 0;
+    }
+    
+    ul li {
+        position: relative;
+        padding-left: 0;
+        margin-bottom: 10px;
+        color: #555;
+        font-size: 15px;
+    }
+    
+    /* Parts List Styling */
+    .parts-list {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 6px;
+        margin: 15px 0;
+    }
+    
+    .parts-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid #e0e0e0;
+        font-size: 15px;
+    }
+    
+    .parts-list li:last-child {
+        border-bottom: none;
+    }
+    
+    .part-number {
+        font-weight: bold;
+        color: #003DA5;
+        margin-right: 8px;
+    }
+    
+    /* Nested Lists */
+    ul ul {
+        margin-top: 10px;
+        margin-left: 15px;
+        margin-bottom: 0;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 6px;
+    }
+    
+    ul ul li {
+        font-size: 14px;
+        padding-left: 0;
+    }
+    
+    /* Important Text Highlighting */
+    strong {
+        color: #003DA5;
+        font-weight: bold;
+    }
+    
+    .highlight-box {
+        background-color: #FFF8DC;
+        border: 1px solid #FFB81C;
+        padding: 3px 8px;
+        display: inline-block;
+        font-weight: bold;
+        color: #003DA5;
+        border-radius: 4px;
+    }
+    
+    /* Contact Section */
+    .contact-box {
+        background-color: #e8f4fd;
+        border: 1px solid #b8d4e8;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 30px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    
+    .contact-box .section-header {
+        font-size: 20px;
+        border-left: none;
+        padding-left: 0;
+        margin-bottom: 15px;
+    }
+    
+    .contact-box ul {
+        background-color: transparent;
+    }
+    
+    .contact-box a {
+        color: #003DA5;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .contact-box a:hover {
+        text-decoration: underline;
+    }
+    
+    /* Exit Notice */
+    .exit-notice {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #FFF8DC;
+        border-left: 4px solid #FFB81C;
+        font-style: italic;
+        color: #666;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+    
+    /* Paragraph spacing */
+    p {
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+    
+    /* Mobile Responsive */
+    @media screen and (max-width: 768px) {
+        body {
+            padding: 0 !important; /* Changed from 10px to 0 */
+        }
+        
+        .consent-wrapper {
+            border-radius: 0; /* Changed from 8px to 0 */
+        }
+        
+        .header {
+            padding: 30px 20px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+        }
+        
+        .study-title {
+            font-size: 20px;
+        }
+        
+        .content {
+            padding: 30px 20px;
+        }
+        
+        .section {
+            padding: 15px;
+            padding-left: 15px;
+        }
+        
+        .section-header {
+            font-size: 18px;
+        }
+        
+        ul li {
+            font-size: 14px;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        body {
+            padding: 0 !important; /* Changed from 5px to 0 */
+        }
+        
+        .consent-wrapper {
+            border-radius: 0; /* Changed from 6px to 0 */
+        }
+        
+        .header {
+            padding: 25px 15px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+        }
+        
+        .study-title {
+            font-size: 18px;
+        }
+        
+        .content {
+            padding: 20px 15px;
+        }
+        
+        .section {
+            padding: 12px;
+            padding-left: 12px;
+            border-radius: 6px;
+        }
+        
+        .section-header {
+            font-size: 17px;
+        }
+        
+        ul li {
+            font-size: 14px;
+        }
+        
+        ul ul li {
+            font-size: 13px;
+        }
+    }
+    
+    /* Print Styles */
+    @media print {
+        body {
+            background-color: white;
+            padding: 0;
+        }
+        
+        .consent-wrapper {
+            max-width: 100%;
+            box-shadow: none;
+            border-radius: 0;
+        }
+        
+        .header {
+            background-color: white;
+            color: black;
+            border-bottom: 2px solid black;
+        }
+        
+        .section-header {
+            color: black;
+        }
+        
+        .content {
+            background-color: white;
+        }
+        
+        .section {
+            background-color: white;
+            box-shadow: none;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="consent-wrapper">
+    <div class="header">
+        <h1>Welcome to our Survey!</h1>
+        <div class="study-title"></div>
+        <div class="researchers">
+            Prof.&nbsp;Rami&nbsp;Zwick, Prof.&nbsp;Ye&nbsp;Li, and PhD Student Rasam&nbsp;Dorri<br>
+            School of Business, University of California, Riverside
+        </div>
+        <div class="irb-protocol">(UCR IRB Protocol # 30770)</div>
+    </div>
+    
+    <div class="content">
+        <div class="section">
+            <span class="section-header">What will happen if you participate?</span>
+            <p style="margin-bottom: 10px; color: #555;">This survey consists of 2 brief parts:</p>
+            <ul class="parts-list">
+                <li><span class="part-number">Part 1:</span>Read a short passage and answer comprehension questions</li>
+                <li><span class="part-number">Part 2:</span>Share your personal views on AI</li>
+
+            </ul>
+            <p style="margin-top: 15px; color: #555; text-align: center;">
+                Total time commitment: <span class="highlight-box">about 4 minutes</span>
+            </p>
+        </div>
+        
+        <div class="section">
+            <span class="section-header">Payments</span>
+            <ul>
+                <li>US $1.50 (≈ $9/hr) via the platform's payment system.</li>
+                <li><strong>Voluntary participation &amp; right to withdraw</strong>
+                    <ul>
+                        <li>Taking part is <strong>voluntary</strong>. However, to be paid, you have to complete the survey.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <span class="section-header">Risks &amp; benefits</span>
+            <ul>
+                <li>Risks: no greater than those of everyday online activities (e.g., boredom).</li>
+                <li>Benefits: You will be paid for participating in the study, and you may learn how apologies influence customer perceptions.</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <span class="section-header">Privacy &amp; confidentiality</span>
+            <p style="margin-left: 0; color: #555;">
+                No names, e-mail addresses, or other identifiers are collected. Results are reported only in aggregate form.
+            </p>
+        </div>
+        
+        <div class="contact-box">
+            <span class="section-header">Questions?</span>
+            <ul style="margin: 0;">
+                <li>Prof.&nbsp;Rami&nbsp;Zwick – <a href="mailto:Rami.Zwick@ucr.edu">Rami.Zwick@ucr.edu</a></li>
+                <li>Rasam&nbsp;Dorri – <a href="mailto:rdorr002@ucr.edu">rdorr002@ucr.edu</a></li>
+                <li>UCR Institutional Review Board – <a href="mailto:irb@ucr.edu">irb@ucr.edu</a> | (951) 827-4802</li>
+            </ul>
+        </div>
+        
+        <div class="exit-notice">
+            If you do not wish to participate, "Exit" the page.
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript to ensure positioning at top -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Force scroll to top
+    window.scrollTo(0, 0);
+    
+    // Additional Qualtrics-specific adjustments
+    var questionBody = document.querySelector('.QuestionBody');
+    if (questionBody) {
+        questionBody.style.padding = '0';
+        questionBody.style.margin = '0';
+    }
+    
+    // Remove any parent padding/margins
+    var parents = document.querySelectorAll('.Skin, .SkinInner, #Questions, .QuestionOuter');
+    parents.forEach(function(el) {
+        if (el) {
+            el.style.paddingTop = '0';
+            el.style.marginTop = '0';
+        }
+    });
+});
+</script>
+</body>
+</html>
